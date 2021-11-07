@@ -1,3 +1,7 @@
+"""
+Test suite for example functions
+"""
+
 import os
 import sys
 
@@ -16,16 +20,19 @@ sys.path.insert(
 
 
 def test_hello_world():
+    """Test hello world"""
     assert (
         examplemodule.hello_world() == "Hello World"
     ), "The Hello World strings should be the same"
 
 
 def test_add_value_to_numpy_wrong_type():
+    """Test add_value_to_numpy with wrong type"""
     with pytest.raises(ValueError) as _:
         examplemodule.add_value_to_numpy([1, 1], 1)
 
 
 def test_add_value_to_numpy_empty():
+    """Test add_value_to_numpy with empty type"""
     with pytest.raises(ValueError) as _:
         examplemodule.add_value_to_numpy(None, 1)

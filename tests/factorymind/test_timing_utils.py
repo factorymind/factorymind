@@ -1,3 +1,7 @@
+"""
+Test suite for factorymind.timingutils
+"""
+
 import logging
 import os
 import sys
@@ -15,6 +19,7 @@ sys.path.insert(
 
 
 def test_setup_logger():
+    """Test setup logger function"""
     assert isinstance(
         timing_utils.setup_logger("test_logger"), logging.Logger
     ), "Should return a Logger object"
@@ -23,4 +28,5 @@ def test_setup_logger():
 
 
 def test_timeit_context():
+    """Test timeit context function"""
     return

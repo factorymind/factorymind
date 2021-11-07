@@ -1,11 +1,6 @@
 #!/usr/bin/env python
-
-"""An example python script template.
-
-Argv:
-    infile: Input file
-    outfile: Output file
-
+"""
+An example python script template.
 """
 
 import argparse
@@ -13,6 +8,12 @@ import sys
 
 
 def main(arguments):
+    """An example python script template.
+
+    Argv:
+        infile: Input file
+        outfile: Output file
+    """
 
     parser = argparse.ArgumentParser(
         description="Put your description here",

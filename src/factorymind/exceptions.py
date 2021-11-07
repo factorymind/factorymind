@@ -22,6 +22,7 @@ class CouldNotFetchDataException(FactoryMindException):
         super().__init__(self.message)
 
     def __str__(self):
+        """Objects own message (self.message)"""
         if self.message:
             return "CouldNotFetchDataException, {} ".format(self.message)
         else:
