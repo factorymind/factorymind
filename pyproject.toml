@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "factorymind"
+version = "0.1.0"
+description = "Python module `factorymind` for the FactoryMind platform"
+authors = ["FactoryMind AS"]
+packages = [
+    { include = "factorymind", from = "src"},
+]
+
+[tool.poetry.dependencies]
+python = "^3.8, <3.10"
+numpy = "^1.21.2"
+pandas = "^1.3.3"
+pytest = "^6.2.5"
+python-dotenv = "^0.19.0"
+fastapi = "^0.68.1"
+uvicorn = "^0.15.0"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^6.4.1"
+flake8 = "^3.9.2"
+pre-commit = "^2.15.0"
+detect-secrets = "^1.1.0"
+isort = "^5.9.3"
+interrogate = "^1.5.0"
+
+[tool.black]
+py36 = true
+include = '\.pyi?$'
+exclude = '''
+/(
+\.git
+| \.hg
+| \.mypy_cache
+| \.tox
+| \.venv
+| \_build
+| buck-out
+| build
+| dist
+# The following are specific to Black, you probably don't want those.
+| blib2to3
+| tests/data
+)/
+'''
+
+
+[tool.isort]
+profile = 'black'
+multi_line_output = 3
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

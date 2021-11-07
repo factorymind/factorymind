@@ -1,0 +1,7 @@
+# ignore .git, .cache and .vscode folders
+.git
+.cache
+.vscode
+
+# ignore all *__pycache__ folders in all folders, including build root
+**/*__pycache__

@@ -1,0 +1,83 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-ast
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      # args: ["--unsafe"]
+      - id: check-added-large-files
+      - id: pretty-format-json
+      - id: check-toml
+      - id: detect-private-key
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: debug-statements
+      # - id: forbid-new-submodules
+      # - id: name-tests-test
+      # - id: no-commit-to-branch
+  - repo: https://github.com/psf/black
+    rev: 21.10b0
+    hooks:
+      - id: black
+        language_version: python3.8
+      - id: black-jupyter
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.11.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==21.9b0]
+  - repo: https://github.com/pycqa/flake8
+    rev: "4.0.1" # pick a git hash / tag to point to
+    hooks:
+      - id: flake8
+        additional_dependencies: [flake8-isort]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.4.1" # Use the sha or tag you want to point at
+    hooks:
+      - id: prettier
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.10.0
+    hooks:
+      - id: isort
+        # args: ["--profile", "black"] # covered in pyproject.toml
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        args: [-vv, -i, --fail-under=0]
+        # args: [-vv, -i, --fail-under=80]
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.910-1
+    hooks:
+      - id: mypy
+        exclude: tests/
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.29.0
+    hooks:
+      - id: pyupgrade
+  # - repo: https://github.com/Yelp/detect-secrets
+  #   # detect-secrets scan > .secrets.baseline
+  #   rev: v1.1.0
+  #   hooks:
+  #     - id: detect-secrets
+  #       args: ["--baseline", ".secrets.baseline"]
+  #       exclude: poetry.lock
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.5.0
+    hooks:
+      - id: nbstripout
+  # - repo: https://github.com/gitguardian/gg-shield
+  #   rev: v1.9.0
+  #   hooks:
+  #     - id: ggshield
+  #       # GITGUARDIAN_API_KEY=<GitGuardian API Key>
+  #       language_version: python3
+  #       stages: [commit]
+  # - repo: https://github.com/PyCQA/bandit
+  #   rev: 1.6.0
+  #   hooks:
+  #     - id: bandit
+  #       args: [--ini, .bandit]
