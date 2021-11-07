@@ -19,7 +19,7 @@ test_requirements = ["pytest", "nbformat"]
 
 setup(
     author="FactoryMind AS",
-    author_email="Name@intellectuallabs.no",
+    author_email="enquiry@factorymind.ai",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
