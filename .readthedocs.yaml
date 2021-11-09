@@ -25,4 +25,6 @@ formats:
 # Optionally declare the Python requirements required to build your docs
 python:
   install:
-    - requirements: docs/writeup/requirements.txt
+    #- requirements: docs/writeup/requirements.txt
+    - method: setuptools
+      path: .
