@@ -1,6 +1,9 @@
 """
 Functionality for interaction with factory data
 on the FactoryMind platform
+
+Code documentation
+^^^^^^^^^^^^^^^^^^
 """
 
 # Standard library imports
@@ -16,16 +19,16 @@ from factorymind.exceptions import (
 API_URL_BASE = "core-api"
 
 
-class FactoryDB:
+class FactoryDB(object):
     """Class for FM interaction with factory data
 
-    Class arguments:
-    ----------------
-    api_url_base : str, default "core-api:80"
+    Class arguments
+    ---------------
+    :param api_url_base: str, defaults to "core-api:80".
         Url to FM api
-    api_key : str, default None
+    :param api_key: str, default `None`.
         API key to use with FM API
-    verbose : boolean, default True
+    :param verbose: boolean, default `True`
         Indicator to print out list of data sources
     """
 
@@ -35,7 +38,7 @@ class FactoryDB:
         api_key: str = None,
         verbose: bool = True,
     ):
-        """Object initiator"""
+        """Constructor method"""
         self.api_url_base = api_url_base
         self.api_key = api_key
         self.verbose = verbose
@@ -49,8 +52,20 @@ class FactoryDB:
 
         Returns:
         --------
-        data_sources : list of strings
+        :return data_sources: list of strings.
             List of data sources (collections) available on FactoryMind data platform
+        :rtype: list
+
+        Example
+        ^^^^^^^
+        .. code-block:: python
+
+            from factorymind.data_loader import FactoryDB
+
+            mydb = FactoryDB(apikey=your-api-key)
+            mydb.list_data_sources()
+
+            >> ...
         """
         resp = requests.get(
             f"http://{self.api_url_base}/list_data_sources?verbose=true"
@@ -58,22 +73,34 @@ class FactoryDB:
         data_sources = self._get_response(resp)
         return data_sources
 
-    def data_info(self, dataset):
+    def data_info(self, dataset: str):
         """More info on specific dataset.
 
         Arguments:
         ----------
-        dataset : str
-            Name of dataset (collection) to
+        :param dataset: str.
+            Name of dataset (table) to get info about.
 
         Returns:
         --------
-        dataset_info : dict
+        :return dataset_info: dict.
             Info of dataset, keys "name", "nrows", "ncolumns"
-        dataset_columns : list
+        :return dataset_columns: list.
             List of dataset columns (strings)
-        dataset_sample : pd.DataFrame
+        :return dataset_sample: pd.DataFrame.
             Sample of 5 last records in dataset
+
+        Example
+        ^^^^^^^
+        .. code-block:: python
+
+            from factorymind.data_loader import FactoryDB
+
+            mydb = FactoryDB(apikey=your-api-key)
+            table_info, _, df_sample = mydb.data_info(dataset='example_data.sensors')
+            print(table_info)
+
+            >> ...
         """
         self._check_if_dataset_exists(dataset)
         resp = requests.get(f"http://{self.api_url_base}/data_info?dataset={dataset}")
@@ -86,28 +113,29 @@ class FactoryDB:
 
         return dataset_info, dataset_columns, dataset_sample
 
-    def get_data(self, dataset, limit=10000):
+    def get_data(self, dataset: str, limit: int = 10000):
         """Fetch batch dataset from DB
-
-        Here 'args' represent filters on dataset, given as dicts.
-
-        Example:
-        --------
-        >> from factorymind.data_loader import FactoryDB
-        >> mydb = FactoryDB()
-        >> df = mydb.get_data("my_dataset", {"timestamp"})
 
         Arguments:
         ----------
-        dataset : str
+        :param dataset: str.
             Name of dataset (collection)
-        limit : int, default 10000
+        :param limit: int, default 10000.
             Number of datapoints (rows) to limit query to
 
         Returns:
         --------
-        data : pd.DataFrame
+        :return data: pd.DataFrame.
             Dataset, limited to last "limit" records
+
+        Example
+        ^^^^^^^
+        .. code-block:: python
+
+            from factorymind.data_loader import FactoryDB
+
+            mydb = FactoryDB(apikey=your-api-key)
+            df = mydb.get_data(dataset="example_data.sensors", limit=100)
         """
         self._check_if_dataset_exists(dataset)
         resp = requests.get(
@@ -123,26 +151,30 @@ class FactoryDB:
 
         return data
 
-    def run_custom_query(self, query):
+    def run_custom_query(self, query: str):
         """Run custom SQL query towards DB
 
-        Example:
-        --------
-        >> from factorymind.data_loader import FactoryDB
-        >> mydb = FactoryDB()
-        >> df = mydb.get_data("my_dataset", {"timestamp"})
-
-        Arguments:
-        ----------
-        dataset : str
+        :param dataset: str.
             Name of dataset (collection)
-        limit : int, default 10000
+        :param limit: int, default 10000.
             Number of datapoints (rows) to limit query to
 
-        Returns:
-        --------
-        data : pd.DataFrame
+        :return data: pd.DataFrame.
             Dataset, limited to last "limit" records
+
+        Example
+        ^^^^^^^
+        .. code-block:: python
+
+            from factorymind.data_loader import FactoryDB
+
+            mydb = FactoryDB(apikey=your-api-key)
+            query = \"\"\"
+                    SELECT timestamp, sensor_00
+                    FROM example_data.sensors
+                    WHERE sensor_00 > 2.30;
+                \"\"\"
+            df = mydb.run_custom_query(query)
         """
         # self._check_if_dataset_exists(dataset)
         resp = requests.get(f"http://{self.api_url_base}/custom_query?query={query}")

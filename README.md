@@ -23,7 +23,8 @@ _Explain the purpose of your repository/project here_
       - [Usage](#usage)
   - [Testing](#testing)
   - [Publish Package](#publish-package)
-  - [References](#references)
+  - [Documentation](#documentation)
+  - [General references](#general-references)
   <!-- /TOC -->
 
 ## Setup
@@ -95,11 +96,39 @@ For more details, see the README in the folder `tests\`.
 - `poetry publish`
   - Use token: https://pypi.org/help/#apitoken
 
-## References
+## Documentation
+
+This project use Sphinx for documentation with auto-documentation for
+the Python package source code in `.src/`.
+The documentation files are located in `./docs/writeup/`.
+
+To update the documentation, go to (`cd` into) `./docs/writeup/`
+and run
+
+```bash
+sphinx-apidoc -f -e -o source ../../src/factorymind
+make html
+```
+
+This will auto-document content in `./src/factorymind/`,
+forcing overwrite of existing doc files (flag `-f`) putting
+docs for each submodule in seperate pages (flag `-e`) and
+placing the `.rst` doc files in `./docs/writeup/source/` (flag `-o`).
+View the updated docs by opening `./docs/writeup/_build/html/index.html`
+in your web browser.
+
+**References:**
+
+- General [Sphinx](https://www.sphinx-doc.org/en/master/) docs
+- Pythons Developers Guide for how to properly [documenting Python code with rst](https://devguide.python.org/documenting/#restructuredtext-primer) and an [example sphinx docstring](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html)
+- Sphinx [themes](https://www.sphinx-doc.org/en/master/usage/theming.html), and in particular docs for customizing the [alabaster theme](https://alabaster.readthedocs.io/en/latest/customization.html)
+- Using [sphinx-apidoc](https://www.sphinx-doc.org/en/master/man/sphinx-apidoc.html) to auto-generate doc files.
+
+## General references
 
 - https://github.com/IntellectualLabs/data_science_template
 - http://docs.python-guide.org/en/latest/writing/structure/
-- https://intellectuallabs.no/
+- https://factorymind.ai/
 
 [//]: #
 [anaconda]: https://www.continuum.io/downloads

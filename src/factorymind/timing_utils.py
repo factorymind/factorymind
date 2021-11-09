@@ -1,5 +1,8 @@
 """
 Utility functions for timing (e.g. tic-yoc functionality)
+
+Code documentation
+^^^^^^^^^^^^^^^^^^
 """
 import logging
 import time
@@ -9,14 +12,18 @@ from contextlib import contextmanager
 
 
 @contextmanager
-def timeit_context(name, logger=None, space="  ", logging_level="debug", tic=None):
+def timeit_context(name: str, logger=None, space="  ", logging_level="debug", tic=None):
     """Time a piece of code
 
-    Example:
-    ---------
-    with timeit_context("Time to do some random list computation"):
-        l = [i**2 for i in range(10000000)]
-        del l
+    Example
+        ^^^^^^^
+        .. code-block:: python
+
+            from factorymind.timing_utils import timeit_context
+
+            with timeit_context("Time to do some random list computation"):
+                l = [i ** 2 for i in range(10000000)]
+                del l
     """
     if logger is None:
         logger = logging.getLogger("root")
@@ -34,8 +41,8 @@ def timeit_context(name, logger=None, space="  ", logging_level="debug", tic=Non
 def setup_logger(name):
     """Set up custom logger
 
-    References:
-    -----------
+    References
+    ^^^^^^^^^^
     https://stackoverflow.com/questions/7621897/python-logging-module-globally
     """
     formatter = logging.Formatter(
