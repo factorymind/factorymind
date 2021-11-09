@@ -1,8 +1,12 @@
-"""
+r"""
 These are custom FM exception classes.
 
-References:
-- https://towardsdatascience.com/how-to-define-custom-exception-classes-in-python-bfa346629bca
+**References**
+
+* Blog post\: `How to define custom exception classes in Python <https://towardsdatascience.com/how-to-define-custom-exception-classes-in-python-bfa346629bca>`_
+
+Code documentation
+^^^^^^^^^^^^^^^^^^
 """
 
 

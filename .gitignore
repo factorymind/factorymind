@@ -428,3 +428,6 @@ tests/.cache/v/cache/lastfailed
 # Omit pytest cache files and coverage files
 .pytest_cache/
 .coverage
+
+# sphinx build directory
+docs/writeup/_build
