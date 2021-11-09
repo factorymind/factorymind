@@ -431,3 +431,6 @@ tests/.cache/v/cache/lastfailed
 
 # sphinx build directory
 docs/writeup/_build
+
+# pypi publish token
+.pypirc

@@ -95,6 +95,7 @@ For more details, see the README in the folder `tests\`.
 - `poetry build`
 - `poetry publish`
   - Use token: https://pypi.org/help/#apitoken
+  - `poetry config pypi-token.pypi my-token` (would be optimal to use the `.pypirc` file, but currently not able to use that in a nice way with poetry)
 
 ## Documentation
 
