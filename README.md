@@ -16,14 +16,17 @@ _Explain the purpose of your repository/project here_
 
 <!-- TOC -->
 
-- [factorymind](#cookiecutterproject_name)
-  - [1. Setup](#1-setup)
-    - [1.1 Precommit](#11-precommit)
-  - [2. Testing](#3-testing)
-  - [3. References](#5-references)
+- [factorymind](#factorymind)
+  - [Setup](#setup)
+    - [Installation issues](#installation-issues)
+    - [Precommit](#precommit)
+      - [Usage](#usage)
+  - [Testing](#testing)
+  - [Publish Package](#publish-package)
+  - [References](#references)
   <!-- /TOC -->
 
-## 1. Setup
+## Setup
 
 _The setup shows how to set up your environment with the `poetry` python package manager_.
 
@@ -40,15 +43,13 @@ _The setup shows how to set up your environment with the `poetry` python package
      - install without dev dependencies `poetry install --no-dev`
    - Update `poetry.lock` without upgrading dependencies: `poetry lock --no-update`
 
-#### Installation issues
+### Installation issues
 
 - If you have any issues installing any python packages
   - especially wheels, try to update pip: `pip install --upgrade pip`
   - Or try upgrading your poetry version: `poetry self update`
 
-### 1.1 Precommit
-
-#### Setup
+### Precommit
 
 - `pip install pre-commit` (already installed in poetry env by default)
 - Install the git hook scripts in `.pre-commit-config.yaml`:
@@ -63,7 +64,7 @@ _The setup shows how to set up your environment with the `poetry` python package
 
 - `pre-commit run --all-files`
 
-## 2. Testing
+## Testing
 
 Reproducability and the correct functioning of code are essential to avoid wasted time.
 If a code block is copied more than once then it should be placed into a
@@ -88,7 +89,13 @@ pytest --cov-report term-missing --cov=src tests/
 
 For more details, see the README in the folder `tests\`.
 
-## 3. References
+## Publish Package
+
+- `poetry build`
+- `poetry publish`
+  - Use token: https://pypi.org/help/#apitoken
+
+## References
 
 - https://github.com/IntellectualLabs/data_science_template
 - http://docs.python-guide.org/en/latest/writing/structure/
