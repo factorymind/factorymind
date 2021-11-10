@@ -60,12 +60,12 @@ class FactoryDB(object):
         ^^^^^^^
         .. code-block:: python
 
-            from factorymind.data_loader import FactoryDB
+            >>> from factorymind.data_loader import FactoryDB
 
-            mydb = FactoryDB(apikey=your-api-key)
-            mydb.list_data_sources()
+            >>> mydb = FactoryDB(apikey=YOUR-API-KEY)
+            >>> mydb.list_data_sources()
 
-            >> ...
+            ['example_data.energy_demand', 'example_data.sensors', 'sensors.sensors', 'sensors.sensors_metadata']
         """
         resp = requests.get(
             f"http://{self.api_url_base}/list_data_sources?verbose=true"
@@ -94,13 +94,13 @@ class FactoryDB(object):
         ^^^^^^^
         .. code-block:: python
 
-            from factorymind.data_loader import FactoryDB
+            >>> from factorymind.data_loader import FactoryDB
 
-            mydb = FactoryDB(apikey=your-api-key)
-            table_info, _, df_sample = mydb.data_info(dataset='example_data.sensors')
-            print(table_info)
+            >>> mydb = FactoryDB(apikey=YOUR-API-KEY)
+            >>> table_info, _, df_sample = mydb.data_info(dataset='example_data.energy_demand')
+            >>> print(table_info)
 
-            >> ...
+            {'name': 'example_data.energy_demand', 'nrows': 35064, 'ncolumns': 29}
         """
         self._check_if_dataset_exists(dataset)
         resp = requests.get(f"http://{self.api_url_base}/data_info?dataset={dataset}")
@@ -132,10 +132,10 @@ class FactoryDB(object):
         ^^^^^^^
         .. code-block:: python
 
-            from factorymind.data_loader import FactoryDB
+            >>> from factorymind.data_loader import FactoryDB
 
-            mydb = FactoryDB(apikey=your-api-key)
-            df = mydb.get_data(dataset="example_data.sensors", limit=100)
+            >>> mydb = FactoryDB(apikey=YOUR-API-KEY)
+            >>> df = mydb.get_data(dataset="example_data.sensors", limit=100)
         """
         self._check_if_dataset_exists(dataset)
         resp = requests.get(
@@ -166,15 +166,15 @@ class FactoryDB(object):
         ^^^^^^^
         .. code-block:: python
 
-            from factorymind.data_loader import FactoryDB
+            >>> from factorymind.data_loader import FactoryDB
 
-            mydb = FactoryDB(apikey=your-api-key)
-            query = \"\"\"
-                    SELECT timestamp, sensor_00
-                    FROM example_data.sensors
-                    WHERE sensor_00 > 2.30;
-                \"\"\"
-            df = mydb.run_custom_query(query)
+            >>> mydb = FactoryDB(apikey=YOUR-API-KEY)
+            >>> query = \"\"\"
+                        SELECT timestamp, sensor_00
+                        FROM example_data.sensors
+                        WHERE sensor_00 > 2.30;
+                    \"\"\"
+            >>> df = mydb.run_custom_query(query)
         """
         # self._check_if_dataset_exists(dataset)
         resp = requests.get(f"http://{self.api_url_base}/custom_query?query={query}")
