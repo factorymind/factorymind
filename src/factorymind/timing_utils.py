@@ -19,11 +19,11 @@ def timeit_context(name: str, logger=None, space="  ", logging_level="debug", ti
         ^^^^^^^
         .. code-block:: python
 
-            from factorymind.timing_utils import timeit_context
+            >>> from factorymind.timing_utils import timeit_context
 
-            with timeit_context("Time to do some random list computation"):
-                l = [i ** 2 for i in range(10000000)]
-                del l
+            >>> with timeit_context("Time to do some random list computation"):
+                    l = [i ** 2 for i in range(10000000)]
+                    del l
     """
     if logger is None:
         logger = logging.getLogger("root")
@@ -39,11 +39,11 @@ def timeit_context(name: str, logger=None, space="  ", logging_level="debug", ti
 
 
 def setup_logger(name):
-    """Set up custom logger
+    r"""Set up custom logger
 
-    References
-    ^^^^^^^^^^
-    https://stackoverflow.com/questions/7621897/python-logging-module-globally
+    **References**
+
+    * Stackoverflow \: `Python logging module globally <https://stackoverflow.com/questions/7621897/python-logging-module-globally>`_
     """
     formatter = logging.Formatter(
         fmt="%(levelname)s:  %(asctime)s - %(module)s - %(message)s",
