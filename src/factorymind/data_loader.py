@@ -16,7 +16,7 @@ from factorymind.exceptions import (
     DatasetDoesNotExistException,
 )
 
-API_URL_BASE = "core-api"
+# API_URL_BASE = "core-api"
 
 
 class FactoryDB(object):
