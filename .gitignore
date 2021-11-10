@@ -4,7 +4,7 @@
 ##
 ## Add custom entries below here.
 ##
-
+webide_examples/*
 
 ##
 ## Python Section - See https://github.com/github/gitignore/blob/master/Python.gitignore
