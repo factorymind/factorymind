@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "factorymind"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python module `factorymind` for the FactoryMind platform"
 authors = ["FactoryMind AS"]
 packages = [
