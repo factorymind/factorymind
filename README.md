@@ -12,8 +12,6 @@
 
 Python module `factorymind` for the FactoryMind platform
 
-_Explain the purpose of your repository/project here_
-
 <!-- TOC -->
 
 - [factorymind](#factorymind)

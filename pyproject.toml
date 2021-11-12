@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "factorymind"
-version = "0.1.1"
-description = "Python module `factorymind` for the FactoryMind platform"
-authors = ["FactoryMind AS"]
+version = "0.1.2"
+description = "Python module for the FactoryMind platform"
+authors = ["FactoryMind <enquiry@factorymind.ai>"]
+repository = "https://github.com/factorymind/factorymind"
+readme = "docs/README.rst"
+homepage = "https://factorymind.ai"
+documentation = "https://factorymind.readthedocs.io"
 packages = [
     { include = "factorymind", from = "src"},
 ]
