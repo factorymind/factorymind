@@ -20,6 +20,7 @@ python-dotenv = "^0.19.0"
 fastapi = "^0.68.1"
 uvicorn = "^0.15.0"
 requests = "^2.26.0"
+bumpver = "^2021.1114"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "^6.4.1"
