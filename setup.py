@@ -36,7 +36,7 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     name="factorymind",
-    # version="0.0.1",
+    # version="0.1.3",
     version_config={"version_format": "{tag}.dev{sha}", "starting_version": "0.0.1"},
     description="Python module `factorymind` for the FactoryMind platform",
     long_description=open("README.md").read(),

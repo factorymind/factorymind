@@ -28,7 +28,7 @@ copyright = "2021, FactoryMind"
 author = "FactoryMind"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+release = "0.1.3"
 
 
 # -- General configuration ---------------------------------------------------

@@ -21,6 +21,7 @@ Python module `factorymind` for the FactoryMind platform
       - [Usage](#usage)
   - [Testing](#testing)
   - [Publish Package](#publish-package)
+    - [Bumpversion](#bumpversion)
   - [Documentation](#documentation)
   - [General references](#general-references)
   <!-- /TOC -->
@@ -94,6 +95,14 @@ For more details, see the README in the folder `tests\`.
 - `poetry publish`
   - Use token: https://pypi.org/help/#apitoken
   - `poetry config pypi-token.pypi my-token` (would be optimal to use the `.pypirc` file, but currently not able to use that in a nice way with poetry)
+
+### Bumpversion
+
+0. Setup `bumpver`
+   1. `poetry add bumpver`
+   2. `bumpver init`
+1. Bump version and commit
+   1. `bumpver update --patch`
 
 ## Documentation
 
